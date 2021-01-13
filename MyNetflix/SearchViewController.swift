@@ -95,10 +95,9 @@ extension SearchViewController: UISearchBarDelegate {
         
         SearchAPI.search(searchTerm) { movies in
             // CollectionView로 표현
-            
             // UICollectionView.reloadData() must be used from main thread only
             DispatchQueue.main.async {
-                self.movies  = movies
+                self.movies = movies
                 self.resultCollectionView.reloadData() // 컬렉션 뷰 리로드
             }
             
