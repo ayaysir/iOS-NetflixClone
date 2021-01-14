@@ -41,18 +41,34 @@ class HomeViewController: UIViewController {
     
 
     @IBAction func playButtonTapped(_ sender: Any) {
-//        SearchAPI.search("interstella") { movies in
-//            guard let interstella = movies.first else { return }
-//            DispatchQueue.main.async {
-//                let url = URL(string: interstella.previewURL)!
-//                let item = AVPlayerItem(url: url)
-//                
-//                let sb = UIStoryboard(name: "Player", bundle: nil)
-//                let vc = sb.instantiateViewController(identifier: "PlayerViewController") as! PlayerViewController
-//                vc.modalPresentationStyle = .fullScreen
-//                vc.player.replaceCurrentItem(with: item)
-//                self.present(vc, animated: false, completion: nil)
-//            }
-//        }
+        // interstellar에 대한 정보를 검색 api로 가져온다.
+        // 거기서 interstellar 객체 하나 가져온다
+        // 그 객체를 이용해서 PlayerViewController 띄움
+        
+        SearchAPI.search("interstellar", completion: { movies in
+            guard let interstellar = movies.first else {
+                return
+            }
+            
+            let url = URL(string: interstellar.previewURL)!
+            let item = AVPlayerItem(url: url)
+            
+            let storyBoard = UIStoryboard(name: "Player", bundle: nil)
+            
+            // 네트워크 작업과 분리
+            DispatchQueue.main.async {
+                let viewController = storyBoard.instantiateViewController(identifier: "PlayerViewController") as! PlayerViewController
+                viewController.player.replaceCurrentItem(with: item)
+                
+                viewController.modalPresentationStyle = .fullScreen
+                self.present(viewController, animated: false, completion: nil)
+            }
+            
+            
+        })
     }
+}
+
+func popFullScreen(searchKeyword: String) {
+    
 }

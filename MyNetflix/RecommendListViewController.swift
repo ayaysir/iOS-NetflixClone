@@ -7,10 +7,13 @@
 //
 
 import UIKit
+import AVFoundation
 
 class RecommendListViewController: UIViewController {
 
     @IBOutlet weak var sectionTitle: UILabel!
+    
+    
     let viewModel = RecommentListViewModel()
     
     override func viewDidLoad() {
@@ -28,6 +31,7 @@ class RecommendListViewController: UIViewController {
 }
 
 extension RecommendListViewController: UICollectionViewDataSource {
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewModel.numOfItems
     }
@@ -40,6 +44,33 @@ extension RecommendListViewController: UICollectionViewDataSource {
         let movie = viewModel.item(at: indexPath.item)
         cell.updateUI(movie: movie)
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("clicked", indexPath.item)
+        let item = viewModel.item(at: indexPath.item)
+        print(item)
+        SearchAPI.search(item.searchKeyword, completion: { movies in
+            guard let interstellar = movies.first else {
+                return
+            }
+            
+            let url = URL(string: interstellar.previewURL)!
+            let item = AVPlayerItem(url: url)
+            
+            let storyBoard = UIStoryboard(name: "Player", bundle: nil)
+            
+            // 네트워크 작업과 분리
+            DispatchQueue.main.async {
+                let viewController = storyBoard.instantiateViewController(identifier: "PlayerViewController") as! PlayerViewController
+                viewController.player.replaceCurrentItem(with: item)
+                
+                viewController.modalPresentationStyle = .fullScreen
+                self.present(viewController, animated: false, completion: nil)
+            }
+            
+            
+        })
     }
 }
 
@@ -92,19 +123,26 @@ class RecommendCell: UICollectionViewCell {
     func updateUI(movie: DummyItem) {
         thumbnailImage.image = movie.thumbnail
     }
+    
+    
+    
+    
+    
 }
 
 class MovieFetcher {
     static func fetch(_ type: RecommentListViewModel.RecommendingType) -> [DummyItem] {
         switch type {
         case .award:
-            let movies = (1..<10).map { DummyItem(thumbnail: UIImage(named: "img_movie_\($0)")!) }
+            let movies = (1..<10).map {
+                DummyItem(thumbnail: UIImage(named: "img_movie_\($0)")!, searchKeyword: "totoro")
+            }
             return movies
         case .hot:
-            let movies = (10..<19).map { DummyItem(thumbnail: UIImage(named: "img_movie_\($0)")!) }
+            let movies = (10..<19).map { DummyItem(thumbnail: UIImage(named: "img_movie_\($0)")!, searchKeyword: "batman") }
             return movies
         case .my:
-            let movies = (1..<10).map { $0 * 2 }.map { DummyItem(thumbnail: UIImage(named: "img_movie_\($0)")!) }
+            let movies = (1..<10).map { $0 * 2 }.map { DummyItem(thumbnail: UIImage(named: "img_movie_\($0)")!, searchKeyword: "Shutter island") }
             return movies
         }
     }
@@ -112,4 +150,5 @@ class MovieFetcher {
 
 struct DummyItem {
     let thumbnail: UIImage
+    let searchKeyword: String
 }
