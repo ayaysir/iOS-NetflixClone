@@ -8,7 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		4411AAAC25B325A70006EA2E /* UpcomingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4411AAAB25B325A70006EA2E /* UpcomingViewController.swift */; };
-		446EF40425AF338A00DAD30D /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = 446EF40325AF338A00DAD30D /* SwiftPackageProductDependency */; };
+		446EF40425AF338A00DAD30D /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 446EF40325AF338A00DAD30D /* Kingfisher */; };
+		449A882D25B330C400A99859 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449A882C25B330C400A99859 /* HistoryViewController.swift */; };
 		44C79F6F25B32B07005C0A7A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 44C79F6E25B32B07005C0A7A /* GoogleService-Info.plist */; };
 		9409834F243468AA00FD1040 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9409834E243468AA00FD1040 /* AppDelegate.swift */; };
 		94098351243468AA00FD1040 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94098350243468AA00FD1040 /* SceneDelegate.swift */; };
@@ -41,6 +42,7 @@
 /* Begin PBXFileReference section */
 		157D855AB5EB92B8A66BA847 /* Pods_MyNetflix.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyNetflix.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4411AAAB25B325A70006EA2E /* UpcomingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingViewController.swift; sourceTree = "<group>"; };
+		449A882C25B330C400A99859 /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		44C79F6E25B32B07005C0A7A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		65172D187E4E946C14A163A9 /* Pods-MyNetflix.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyNetflix.debug.xcconfig"; path = "Target Support Files/Pods-MyNetflix/Pods-MyNetflix.debug.xcconfig"; sourceTree = "<group>"; };
 		9409834B243468AA00FD1040 /* MyNetflix.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyNetflix.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -65,7 +67,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				446EF40425AF338A00DAD30D /* BuildFile in Frameworks */,
+				446EF40425AF338A00DAD30D /* Kingfisher in Frameworks */,
 				ACFF2ABB5D592B2E15A97B78 /* Pods_MyNetflix.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -79,7 +81,6 @@
 				65172D187E4E946C14A163A9 /* Pods-MyNetflix.debug.xcconfig */,
 				9DE1857BE049626B8BEFA587 /* Pods-MyNetflix.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -111,6 +112,7 @@
 				94DFD7542435DA88009687ED /* SearchViewController.swift */,
 				94DFD7522435CED7009687ED /* RecommendListViewController.swift */,
 				94098354243468AA00FD1040 /* Main.storyboard */,
+				449A882C25B330C400A99859 /* HistoryViewController.swift */,
 				94098366243469D700FD1040 /* Player.storyboard */,
 				940983642434693600FD1040 /* PlayerViewController.swift */,
 				94DFD7802436F11B009687ED /* PlayerView.swift */,
@@ -151,7 +153,7 @@
 			);
 			name = MyNetflix;
 			packageProductDependencies = (
-				446EF40325AF338A00DAD30D /* SwiftPackageProductDependency */,
+				446EF40325AF338A00DAD30D /* Kingfisher */,
 			);
 			productName = MyNetflix;
 			productReference = 9409834B243468AA00FD1040 /* MyNetflix.app */;
@@ -182,7 +184,7 @@
 			);
 			mainGroup = 94098342243468AA00FD1040;
 			packageReferences = (
-				446EF40225AF338A00DAD30D /* RemoteSwiftPackageReference */,
+				446EF40225AF338A00DAD30D /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = 9409834C243468AA00FD1040 /* Products */;
 			projectDirPath = "";
@@ -258,6 +260,7 @@
 				94098353243468AA00FD1040 /* AppTabbarController.swift in Sources */,
 				94DFD7552435DA88009687ED /* SearchViewController.swift in Sources */,
 				94DFD7812436F11B009687ED /* PlayerView.swift in Sources */,
+				449A882D25B330C400A99859 /* HistoryViewController.swift in Sources */,
 				4411AAAC25B325A70006EA2E /* UpcomingViewController.swift in Sources */,
 				9409834F243468AA00FD1040 /* AppDelegate.swift in Sources */,
 				94098351243468AA00FD1040 /* SceneDelegate.swift in Sources */,
@@ -465,7 +468,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		446EF40225AF338A00DAD30D /* RemoteSwiftPackageReference */ = {
+		446EF40225AF338A00DAD30D /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/onevcat/Kingfisher";
 			requirement = {
@@ -476,9 +479,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		446EF40325AF338A00DAD30D /* SwiftPackageProductDependency */ = {
+		446EF40325AF338A00DAD30D /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 446EF40225AF338A00DAD30D /* RemoteSwiftPackageReference */;
+			package = 446EF40225AF338A00DAD30D /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
 		};
 /* End XCSwiftPackageProductDependency section */
